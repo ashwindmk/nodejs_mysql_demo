@@ -108,4 +108,14 @@ app.post('/updateuser/:id', (req, res) => {
     });
 });
 
+// Delete user
+app.get('/deleteuser/:id', (req, res) => {
+    let sql = `DELETE FROM users WHERE id = ${req.params.id}`;
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.json(result);
+    });
+});
+
 app.listen('3000', () => console.log('Server started on port 3000'));
